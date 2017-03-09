@@ -5,7 +5,7 @@
   </head>
   <body>
 	<script>
-		class LinkedListNode {                               
+		class LinkedListNode {
 			constructor (value, next) {            
 				this._val = value;                
 				this.next = next !== undefined ? next : null;                   
@@ -17,6 +17,7 @@
 				this._val = value;
 			}
 		}
+		
 		class LinkedList{
 			constructor () {
 				this.head = null;
@@ -57,9 +58,9 @@
 					} else {
 						const temp = this.head;
 						this.head = temp.next;
-						return `${ temp } has been removed from the list.`;
 					}
 					this.length--;
+					
 				} else {
 					return "No Elements to reomve";
 				}
@@ -79,8 +80,6 @@
 						
 						head.next = null;
 						this.tail = head;
-						
-						return `${ tail } has been removed from the list.`;
 					}
 					this.length--;
 				} else {
@@ -105,6 +104,7 @@
 			}
 		}
 		
+		
 	</script>
 	
 	<h1>Linked List</h1>
@@ -118,7 +118,7 @@
 	</ul>
 	
 	<pre>
-		class LinkedListNode {                               
+		class LinkedListNode {
 			constructor (value, next) {            
 				this._val = value;                
 				this.next = next !== undefined ? next : null;                   
@@ -130,6 +130,7 @@
 				this._val = value;
 			}
 		}
+		
 		class LinkedList{
 			constructor () {
 				this.head = null;
@@ -139,6 +140,7 @@
 			
 			addFront (val) {
 				const node = new LinkedListNode(val);
+				
 				if(this.length === 0 ) {
 					this.head = node;
 					this.tail = node;
@@ -151,6 +153,7 @@
 			}
 			addLast (val) {
 				const node = new LinkedListNode(val);
+				
 				if(this.length === 0 ) {
 					this.head = node;
 					this.tail = node;
@@ -168,9 +171,9 @@
 					} else {
 						const temp = this.head;
 						this.head = temp.next;
-						return `${ temp } has been removed from the list.`;
 					}
 					this.length--;
+					
 				} else {
 					return "No Elements to reomve";
 				}
@@ -190,8 +193,6 @@
 						
 						head.next = null;
 						this.tail = head;
-						
-						return `${ tail } has been removed from the list.`;
 					}
 					this.length--;
 				} else {

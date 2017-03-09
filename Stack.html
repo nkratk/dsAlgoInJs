@@ -1,15 +1,16 @@
 <!doctype html>
 <html>
   <head>
-    <title>Getting Started with Double LinkedList</title>
+    <title>Getting Started with Stack</title>
   </head>
   <body>
 	<script>
-		class DoubleLinkedListNode {                               
-			constructor (value, next, prev) {            
+		//Stack using linked list
+		
+		class LinkedListNode {
+			constructor (value, next) {            
 				this._val = value;                
 				this.next = next !== undefined ? next : null;                   
-				this.prev = prev !== undefined ? prev : null;                   
 			}                                      
 			get value () {                         
 				return this._val;                  
@@ -18,7 +19,8 @@
 				this._val = value;
 			}
 		}
-		class DoubleLinkedList {
+		
+		class LinkedList{
 			constructor () {
 				this.head = null;
 				this.tail = null;
@@ -26,14 +28,12 @@
 			}
 			
 			addFront (val) {
-				const node = new DoubleLinkedListNode(val);
+				const node = new LinkedListNode(val);
 				
 				if(this.length === 0 ) {
 					this.head = node;
 					this.tail = node;
 				} else {
-					this.head.prev = node;
-					
 					const temp = this.head;
 					node.next = temp;
 					this.head = node;
@@ -41,18 +41,14 @@
 				this.length++;
 			}
 			addLast (val) {
-				const node = new DoubleLinkedListNode(val);
+				const node = new LinkedListNode(val);
 				
 				if(this.length === 0 ) {
 					this.head = node;
 					this.tail = node;
 				} else {
-					
 					this.tail.next = node;
-					const temp = this.tail;
-					
 					this.tail = node;
-					this.tail.prev = temp;
 				}
 				this.length++;
 			}
@@ -64,9 +60,9 @@
 					} else {
 						const temp = this.head;
 						this.head = temp.next;
-						this.head.prev = null;
 					}
 					this.length--;
+					
 				} else {
 					return "No Elements to reomve";
 				}
@@ -77,11 +73,15 @@
 						this.head = null;
 						this.tail = null;
 					} else {
+						let head = this.head,
+							tail = this.tail;
+							
+						while ( head.next !== tail) {
+							head = head.next;
+						}
 						
-						const prev = this.tail.prev;
-						
-						this.tail = prev;
-						this.tail.next = null;
+						head.next = null;
+						this.tail = head;
 					}
 					this.length--;
 				} else {
@@ -106,24 +106,61 @@
 			}
 		}
 		
+		class Stack {
+			constructor () {
+				this.list = new LinkedList();
+			}
+			push (val) {
+				this.list.addFront(val);
+			}
+			pop () {
+				this.list.removeFront();
+			}
+			peek () {
+				return this.list.head;
+			}
+			clear () {
+				this.list.head = null;
+				this.list.tail = null;
+				this.list.length = 0;
+			}
+		}
+		
+		//Stack using an Array
+		
+		class ArrayStack {
+			constructor () {
+				this.list = [];
+			}
+			push (val) {
+				this.list.push(val);
+			}
+			pop () {
+				this.list.pop();
+			}
+			peek () {
+				return this.list[this.list.length - 1];
+			}
+			clear () {
+				this.list = [];
+			}
+		}
 	</script>
 	
-	<h1>Double Linked List</h1>
+	<h1>Stack</h1>
 	<ul>
-		<li>Single chain of nodes : prev and next pointers</li>
-		<li>Head Pointer</li>
-		<li>Tail Pointer</li>
-		<li>
-			operations: Add, Remove, Find, Enumerate
-		</li>
+		<li>LIFO - Last in first out Ex: Restaurant plates stack</li>
+		<li>push, pop, peaking, depth</li>
 	</ul>
 	
 	<pre>
-				class DoubleLinkedListNode {                               
-			constructor (value, next, prev) {            
+		
+		//Stack using linked list
+		
+		class LinkedListNode {
+			constructor (value, next) {            
 				this._val = value;                
 				this.next = next !== undefined ? next : null;                   
-				this.prev = prev !== undefined ? prev : null;                   
 			}                                      
 			get value () {                         
 				return this._val;                  
@@ -132,7 +169,8 @@
 				this._val = value;
 			}
 		}
-		class DoubleLinkedList {
+		
+		class LinkedList{
 			constructor () {
 				this.head = null;
 				this.tail = null;
@@ -140,14 +178,12 @@
 			}
 			
 			addFront (val) {
-				const node = new DoubleLinkedListNode(val);
+				const node = new LinkedListNode(val);
 				
 				if(this.length === 0 ) {
 					this.head = node;
 					this.tail = node;
 				} else {
-					this.head.prev = node;
-					
 					const temp = this.head;
 					node.next = temp;
 					this.head = node;
@@ -155,18 +191,14 @@
 				this.length++;
 			}
 			addLast (val) {
-				const node = new DoubleLinkedListNode(val);
+				const node = new LinkedListNode(val);
 				
 				if(this.length === 0 ) {
 					this.head = node;
 					this.tail = node;
 				} else {
-					
 					this.tail.next = node;
-					const temp = this.tail;
-					
 					this.tail = node;
-					this.tail.prev = temp;
 				}
 				this.length++;
 			}
@@ -178,9 +210,9 @@
 					} else {
 						const temp = this.head;
 						this.head = temp.next;
-						this.head.prev = null;
 					}
 					this.length--;
+					
 				} else {
 					return "No Elements to reomve";
 				}
@@ -190,11 +222,16 @@
 					if(this.length === 1) {
 						this.head = null;
 						this.tail = null;
-					} else {						
-						const prev = this.tail.prev;
+					} else {
+						let head = this.head,
+							tail = this.tail;
+							
+						while ( head.next !== tail) {
+							head = head.next;
+						}
 						
-						this.tail = prev;
-						this.tail.next = null;
+						head.next = null;
+						this.tail = head;
 					}
 					this.length--;
 				} else {
@@ -219,7 +256,45 @@
 			}
 		}
 		
-		//use console to play with code
+		class Stack {
+			constructor () {
+				this.list = new LinkedList();
+			}
+			push (val) {
+				this.list.addFront(val);
+			}
+			pop () {
+				this.list.removeFront();
+			}
+			peek () {
+				return this.list.head;
+			}
+			clear () {
+				this.list.head = null;
+				this.list.tail = null;
+				this.list.length = 0;
+			}
+		}
+		
+		//Stack using an Array
+		
+		class ArrayStack {
+			constructor () {
+				this.list = [];
+			}
+			push (val) {
+				this.list.push(val);
+			}
+			pop () {
+				this.list.pop();
+			}
+			peek () {
+				return this.list[this.list.length - 1];
+			}
+			clear () {
+				this.list = [];
+			}
+		}
 	</pre>
 	
 

@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started with Post Fix</title>
+  </head>
+  <body>
+	<script>
+		class PostFixAlgo {
+			constructor () {
+				this.list = [];
+			}
+			push (val) {
+				this.list.push(val);
+			}
+			pop () {
+				this.list.pop();
+			}
+			peek () {
+				return this.list[this.list.length - 1];
+			}
+			clear () {
+				this.list = [];
+			}
+			getResult (str) {
+				this.clear();
+				
+				//expects a parameter in a string format
+				
+				const arr = str.split(" ");
+				
+				arr.forEach((val) => {
+					if(!Number.isNaN(+val)) {
+						//Number
+						this.push(+val);
+					} else {
+						//Operator
+						const rhs = this.peek();
+						this.pop();
+						const lhs = this.peek();
+						this.pop();
+						
+						switch (val) {
+							case "+":
+								this.push( lhs + rhs);
+							break;
+							case "*":
+								this.push(lhs * rhs);
+							break;
+							case "-":
+								this.push(lhs - rhs);
+							break;
+							case "/":
+								this.push(lhs / rhs);
+							break;
+							case "%":
+								this.push(lhs % rhs);
+							break;
+							default:
+								throw new Error(` un recognised value: ${val}`);
+						}
+					}
+				});
+				
+				return this.peek();
+			}
+		}
+	</script>
+	
+	<h1>PostFix Algo using stack</h1>
+	<ul>
+		<li>Precedence ambiguity Ex: 5 + 2 * 3 - 1 </li>
+		<li>To Avoid it we use postfix Algo --> 5 2 3 * + 1 - </li>
+	</ul>
+	
+	<pre>
+				class PostFixAlgo {
+			constructor () {
+				this.list = [];
+			}
+			push (val) {
+				this.list.push(val);
+			}
+			pop () {
+				this.list.pop();
+			}
+			peek () {
+				return this.list[this.list.length - 1];
+			}
+			clear () {
+				this.list = [];
+			}
+			getResult (str) {
+				this.clear();
+				
+				//expects a parameter in a string format
+				
+				const arr = str.split(" ");
+				
+				arr.forEach((val) => {
+					if(!Number.isNaN(+val)) {
+						//Number
+						this.push(+val);
+					} else {
+						//Operator
+						const rhs = this.peek();
+						this.pop();
+						const lhs = this.peek();
+						this.pop();
+						
+						switch (val) {
+							case "+":
+								this.push( lhs + rhs);
+							break;
+							case "*":
+								this.push(lhs * rhs);
+							break;
+							case "-":
+								this.push(lhs - rhs);
+							break;
+							case "/":
+								this.push(lhs / rhs);
+							break;
+							case "%":
+								this.push(lhs % rhs);
+							break;
+							default:
+								throw new Error(` un recognised value: ${val}`);
+						}
+					}
+				});
+				
+				return this.peek();
+			}
+		}
+		
+	</pre>
+	
+
+  </body>
+</html>
+

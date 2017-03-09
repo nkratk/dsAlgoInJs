@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started with Queue</title>
+  </head>
+  <body>
+	<script>
+		class PriorityQueue {
+			constructor () {
+				this.list = [];
+			}
+			enQueue (val, priority) {
+				if(priority) {
+					//add to first
+					this.list.unshift(val);
+				} else {
+					//add to last
+					this.list.push(val);
+				}
+				return this.list;
+				
+			}
+			deQueue () {
+				//remove from first
+				this.list.shift();
+				return this.list;
+			}
+			peek () {
+				//head - get the first one
+				return this.list[0];
+			}
+		}
+	</script>
+	
+	<h1>Priority Queue</h1>
+	<ul>
+		<li>FIFO - Not First in first out Ex: Police station or call center </li>
+		<li>Enqueue - priority, Dequeue</li>
+	</ul>
+	
+	<pre>
+		class PriorityQueue {
+			constructor () {
+				this.list = [];
+			}
+			enQueue (val, priority) {
+				if(priority) {
+					//add to first
+					this.list.unshift(val);
+				} else {
+					//add to last
+					this.list.push(val);
+				}
+				return this.list;
+				
+			}
+			deQueue () {
+				//remove from first
+				this.list.shift();
+				return this.list;
+			}
+			peek () {
+				//head - get the first one
+				return this.list[0];
+			}
+		}
+	</pre>
+	
+
+  </body>
+</html>
+
