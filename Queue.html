@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started with Queue</title>
+  </head>
+  <body>
+	<script>
+		class Queue {
+			constructor () {
+				this.list = [];
+			}
+			enQueue (val) {
+			//add to last
+				this.list.push(val);
+				return this.list;
+			}
+			deQueue () {
+				//remove from first
+				this.list.shift();
+				return this.list;
+			}
+			peek () {
+				//head - get the first one
+				return this.list[0];
+			}
+		}
+	</script>
+	
+	<h1>Queue</h1>
+	<ul>
+		<li>FIFO - First in first out Ex: Grocery store </li>
+		<li>Enqueue, Dequeue</li>
+	</ul>
+	
+	<pre>
+		class Queue {
+			constructor () {
+				this.list = [];
+			}
+			enQueue (val) {
+			//add to last
+				this.list.push(val);
+				return this.list;
+			}
+			deQueue () {
+				//remove from first
+				this.list.shift();
+				return this.list;
+			}
+			peek () {
+				//head - get the first one
+				return this.list[0];
+			}
+		}
+		
+	</pre>
+	
+
+  </body>
+</html>
+

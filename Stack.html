@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started with Stack</title>
+  </head>
+  <body>
+	<script>
+		//Stack using linked list
+		
+		class LinkedListNode {
+			constructor (value, next) {            
+				this._val = value;                
+				this.next = next !== undefined ? next : null;                   
+			}                                      
+			get value () {                         
+				return this._val;                  
+			}                                      
+			set value (value) {                   
+				this._val = value;
+			}
+		}
+		
+		class LinkedList{
+			constructor () {
+				this.head = null;
+				this.tail = null;
+				this.length = 0;
+			}
+			
+			addFront (val) {
+				const node = new LinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					const temp = this.head;
+					node.next = temp;
+					this.head = node;
+				}
+				this.length++;
+			}
+			addLast (val) {
+				const node = new LinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					this.tail.next = node;
+					this.tail = node;
+				}
+				this.length++;
+			}
+			removeFront ()  {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {
+						const temp = this.head;
+						this.head = temp.next;
+					}
+					this.length--;
+					
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			removeLast () {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {
+						let head = this.head,
+							tail = this.tail;
+							
+						while ( head.next !== tail) {
+							head = head.next;
+						}
+						
+						head.next = null;
+						this.tail = head;
+					}
+					this.length--;
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			enumerate () {
+				let head = this.head;
+				while(head !== null){
+					console.log(head);
+					head = head.next;
+				}
+			}
+			copyToArray (arr = []) {
+				
+				let head = this.head;
+				while(head !== null){
+					arr.push(head);
+					head = head.next;
+				}
+				return arr;
+			}
+		}
+		
+		class Stack {
+			constructor () {
+				this.list = new LinkedList();
+			}
+			push (val) {
+				this.list.addFront(val);
+			}
+			pop () {
+				this.list.removeFront();
+			}
+			peek () {
+				return this.list.head;
+			}
+			clear () {
+				this.list.head = null;
+				this.list.tail = null;
+				this.list.length = 0;
+			}
+		}
+		
+		//Stack using an Array
+		
+		class ArrayStack {
+			constructor () {
+				this.list = [];
+			}
+			push (val) {
+				this.list.push(val);
+			}
+			pop () {
+				this.list.pop();
+			}
+			peek () {
+				return this.list[this.list.length - 1];
+			}
+			clear () {
+				this.list = [];
+			}
+		}
+	</script>
+	
+	<h1>Stack</h1>
+	<ul>
+		<li>LIFO - Last in first out Ex: Restaurant plates stack</li>
+		<li>push, pop, peaking, depth</li>
+	</ul>
+	
+	<pre>
+		
+		//Stack using linked list
+		
+		class LinkedListNode {
+			constructor (value, next) {            
+				this._val = value;                
+				this.next = next !== undefined ? next : null;                   
+			}                                      
+			get value () {                         
+				return this._val;                  
+			}                                      
+			set value (value) {                   
+				this._val = value;
+			}
+		}
+		
+		class LinkedList{
+			constructor () {
+				this.head = null;
+				this.tail = null;
+				this.length = 0;
+			}
+			
+			addFront (val) {
+				const node = new LinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					const temp = this.head;
+					node.next = temp;
+					this.head = node;
+				}
+				this.length++;
+			}
+			addLast (val) {
+				const node = new LinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					this.tail.next = node;
+					this.tail = node;
+				}
+				this.length++;
+			}
+			removeFront ()  {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {
+						const temp = this.head;
+						this.head = temp.next;
+					}
+					this.length--;
+					
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			removeLast () {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {
+						let head = this.head,
+							tail = this.tail;
+							
+						while ( head.next !== tail) {
+							head = head.next;
+						}
+						
+						head.next = null;
+						this.tail = head;
+					}
+					this.length--;
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			enumerate () {
+				let head = this.head;
+				while(head !== null){
+					console.log(head);
+					head = head.next;
+				}
+			}
+			copyToArray (arr = []) {
+				
+				let head = this.head;
+				while(head !== null){
+					arr.push(head);
+					head = head.next;
+				}
+				return arr;
+			}
+		}
+		
+		class Stack {
+			constructor () {
+				this.list = new LinkedList();
+			}
+			push (val) {
+				this.list.addFront(val);
+			}
+			pop () {
+				this.list.removeFront();
+			}
+			peek () {
+				return this.list.head;
+			}
+			clear () {
+				this.list.head = null;
+				this.list.tail = null;
+				this.list.length = 0;
+			}
+		}
+		
+		//Stack using an Array
+		
+		class ArrayStack {
+			constructor () {
+				this.list = [];
+			}
+			push (val) {
+				this.list.push(val);
+			}
+			pop () {
+				this.list.pop();
+			}
+			peek () {
+				return this.list[this.list.length - 1];
+			}
+			clear () {
+				this.list = [];
+			}
+		}
+	</pre>
+	
+
+  </body>
+</html>
+

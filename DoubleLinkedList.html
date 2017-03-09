@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started with Double LinkedList</title>
+  </head>
+  <body>
+	<script>
+		class DoubleLinkedListNode {                               
+			constructor (value, next, prev) {            
+				this._val = value;                
+				this.next = next !== undefined ? next : null;                   
+				this.prev = prev !== undefined ? prev : null;                   
+			}                                      
+			get value () {                         
+				return this._val;                  
+			}                                      
+			set value (value) {                   
+				this._val = value;
+			}
+		}
+		class DoubleLinkedList {
+			constructor () {
+				this.head = null;
+				this.tail = null;
+				this.length = 0;
+			}
+			
+			addFront (val) {
+				const node = new DoubleLinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					this.head.prev = node;
+					
+					const temp = this.head;
+					node.next = temp;
+					this.head = node;
+				}
+				this.length++;
+			}
+			addLast (val) {
+				const node = new DoubleLinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					
+					this.tail.next = node;
+					const temp = this.tail;
+					
+					this.tail = node;
+					this.tail.prev = temp;
+				}
+				this.length++;
+			}
+			removeFront ()  {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {
+						const temp = this.head;
+						this.head = temp.next;
+						this.head.prev = null;
+					}
+					this.length--;
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			removeLast () {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {
+						
+						const prev = this.tail.prev;
+						
+						this.tail = prev;
+						this.tail.next = null;
+					}
+					this.length--;
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			enumerate () {
+				let head = this.head;
+				while(head !== null){
+					console.log(head);
+					head = head.next;
+				}
+			}
+			copyToArray (arr = []) {
+				
+				let head = this.head;
+				while(head !== null){
+					arr.push(head);
+					head = head.next;
+				}
+				return arr;
+			}
+		}
+		
+	</script>
+	
+	<h1>Double Linked List</h1>
+	<ul>
+		<li>Single chain of nodes : prev and next pointers</li>
+		<li>Head Pointer</li>
+		<li>Tail Pointer</li>
+		<li>
+			operations: Add, Remove, Find, Enumerate
+		</li>
+	</ul>
+	
+	<pre>
+				class DoubleLinkedListNode {                               
+			constructor (value, next, prev) {            
+				this._val = value;                
+				this.next = next !== undefined ? next : null;                   
+				this.prev = prev !== undefined ? prev : null;                   
+			}                                      
+			get value () {                         
+				return this._val;                  
+			}                                      
+			set value (value) {                   
+				this._val = value;
+			}
+		}
+		class DoubleLinkedList {
+			constructor () {
+				this.head = null;
+				this.tail = null;
+				this.length = 0;
+			}
+			
+			addFront (val) {
+				const node = new DoubleLinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					this.head.prev = node;
+					
+					const temp = this.head;
+					node.next = temp;
+					this.head = node;
+				}
+				this.length++;
+			}
+			addLast (val) {
+				const node = new DoubleLinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					
+					this.tail.next = node;
+					const temp = this.tail;
+					
+					this.tail = node;
+					this.tail.prev = temp;
+				}
+				this.length++;
+			}
+			removeFront ()  {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {
+						const temp = this.head;
+						this.head = temp.next;
+						this.head.prev = null;
+					}
+					this.length--;
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			removeLast () {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {						
+						const prev = this.tail.prev;
+						
+						this.tail = prev;
+						this.tail.next = null;
+					}
+					this.length--;
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			enumerate () {
+				let head = this.head;
+				while(head !== null){
+					console.log(head);
+					head = head.next;
+				}
+			}
+			copyToArray (arr = []) {
+				
+				let head = this.head;
+				while(head !== null){
+					arr.push(head);
+					head = head.next;
+				}
+				return arr;
+			}
+		}
+		
+		//use console to play with code
+	</pre>
+	
+
+  </body>
+</html>
+

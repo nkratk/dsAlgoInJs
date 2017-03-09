@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started with LinkedList</title>
+  </head>
+  <body>
+	<script>
+		class LinkedListNode {
+			constructor (value, next) {            
+				this._val = value;                
+				this.next = next !== undefined ? next : null;                   
+			}                                      
+			get value () {                         
+				return this._val;                  
+			}                                      
+			set value (value) {                   
+				this._val = value;
+			}
+		}
+		
+		class LinkedList{
+			constructor () {
+				this.head = null;
+				this.tail = null;
+				this.length = 0;
+			}
+			
+			addFront (val) {
+				const node = new LinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					const temp = this.head;
+					node.next = temp;
+					this.head = node;
+				}
+				this.length++;
+			}
+			addLast (val) {
+				const node = new LinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					this.tail.next = node;
+					this.tail = node;
+				}
+				this.length++;
+			}
+			removeFront ()  {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {
+						const temp = this.head;
+						this.head = temp.next;
+					}
+					this.length--;
+					
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			removeLast () {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {
+						let head = this.head,
+							tail = this.tail;
+							
+						while ( head.next !== tail) {
+							head = head.next;
+						}
+						
+						head.next = null;
+						this.tail = head;
+					}
+					this.length--;
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			enumerate () {
+				let head = this.head;
+				while(head !== null){
+					console.log(head);
+					head = head.next;
+				}
+			}
+			copyToArray (arr = []) {
+				
+				let head = this.head;
+				while(head !== null){
+					arr.push(head);
+					head = head.next;
+				}
+				return arr;
+			}
+		}
+		
+		
+	</script>
+	
+	<h1>Linked List</h1>
+	<ul>
+		<li>Single chain of nodes</li>
+		<li>Head Pointer</li>
+		<li>Tail Pointer</li>
+		<li>
+			operations: Add, Remove, Find, Enumerate
+		</li>
+	</ul>
+	
+	<pre>
+		class LinkedListNode {
+			constructor (value, next) {            
+				this._val = value;                
+				this.next = next !== undefined ? next : null;                   
+			}                                      
+			get value () {                         
+				return this._val;                  
+			}                                      
+			set value (value) {                   
+				this._val = value;
+			}
+		}
+		
+		class LinkedList{
+			constructor () {
+				this.head = null;
+				this.tail = null;
+				this.length = 0;
+			}
+			
+			addFront (val) {
+				const node = new LinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					const temp = this.head;
+					node.next = temp;
+					this.head = node;
+				}
+				this.length++;
+			}
+			addLast (val) {
+				const node = new LinkedListNode(val);
+				
+				if(this.length === 0 ) {
+					this.head = node;
+					this.tail = node;
+				} else {
+					this.tail.next = node;
+					this.tail = node;
+				}
+				this.length++;
+			}
+			removeFront ()  {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {
+						const temp = this.head;
+						this.head = temp.next;
+					}
+					this.length--;
+					
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			removeLast () {
+				if(this.length > 0) {
+					if(this.length === 1) {
+						this.head = null;
+						this.tail = null;
+					} else {
+						let head = this.head,
+							tail = this.tail;
+							
+						while ( head.next !== tail) {
+							head = head.next;
+						}
+						
+						head.next = null;
+						this.tail = head;
+					}
+					this.length--;
+				} else {
+					return "No Elements to reomve";
+				}
+			}
+			enumerate () {
+				let head = this.head;
+				while(head !== null){
+					console.log(head);
+					head = head.next;
+				}
+			}
+			copyToArray (arr = []) {
+				
+				let head = this.head;
+				while(head !== null){
+					arr.push(head);
+					head = head.next;
+				}
+				return arr;
+			}
+		}
+		
+		//check console to see the output
+	</pre>
+	
+
+  </body>
+</html>
+

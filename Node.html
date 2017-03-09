@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started with Node</title>
+  </head>
+  <body>
+	<script>
+		class Node {
+			constructor (value, next) {
+				this._val = value;
+				this.next = next !==undefined ? next : null;
+			}
+			get value () {
+				return this._val;
+			}
+			set value (value) {
+				this._val = value;
+			}
+		}
+		const printNodes = (node) => {
+			while (node !== null) {
+				console.log('node', node.value);
+				node = node.next;
+			}
+		};
+		
+		const first = new Node(5),
+			middle = new Node(6),
+			last = new Node(7);
+			
+		first.next = middle;
+		middle.next = last;
+		
+		printNodes(first);
+		
+	</script>
+	
+	<h1>Node</h1>
+	<ul>
+		<li>Holds a value</li>
+		<li>Provides a pointer to next node.</li>
+	</ul>
+	
+	<pre>
+		class Node {                               
+			constructor (value, next) {            
+				this._val = value;                
+				this.ref = next;                   
+			}                                      
+			get value () {                         
+				return this._val;                  
+			}                                      
+			set value (value) {                   
+				this._val = value;
+			}
+		}
+		
+		const printNodes = (node) => {
+			while (node !== null) {
+				console.log('node', node.value);
+				node = node.next;
+			}
+		},
+			first = new Node(5),
+			middle = new Node(6),
+			last = new Node(7);
+			
+		first.next = middle;
+		middle.next = last;
+		
+		printNodes(first);
+		
+		//check console to see the output
+	</pre>
+	
+
+  </body>
+</html>
+
